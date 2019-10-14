@@ -9,7 +9,6 @@
   <!-- Site Properties -->
   <title>Serverless Jams</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-  <link rel="stylesheet" type="text/css" href="/main.css">
   <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -90,26 +89,26 @@
     </div>
     <br>
     <div class="ui labeled button" tabindex="0">
-        <div class="ui purple button">
+        <a class="ui purple button" href="https://open.spotify.com/track/7iWC3Jb6EHchYeRZSD2yph">
             <i class="star icon"></i> Coderitis
-        </div>
-        <a class="ui basic purple left pointing label">
+        </a>
+        <a class="ui basic purple left pointing label" href="https://open.spotify.com/track/7iWC3Jb6EHchYeRZSD2yph">
             <div name="coderitis">0</div>
         </a>
     </div>
     <div class="ui labeled button" tabindex="0">
-        <div class="ui grey button">
+        <a class="ui grey button" href="https://open.spotify.com/track/1Noc3uXEntDw6IsyszPxr3">
             <i class="star icon"></i> Stateless
-        </div>
-        <a class="ui basic grey left pointing label">
+        </a>
+        <a class="ui basic grey left pointing label" href="https://open.spotify.com/track/1Noc3uXEntDw6IsyszPxr3">
             <div name="stateless">0</div>
         </a>
     </div>
     <div class="ui labeled button" tabindex="0">
-        <div class="ui black button">
+        <a class="ui black button" href="https://open.spotify.com/track/38anNXjajN1Ecf4mWTV6Pr">
             <i class="star icon"></i> Dynamo
-        </div>
-        <a class="ui basic black left pointing label">
+        </a>
+        <a class="ui basic black left pointing label" href="https://open.spotify.com/track/38anNXjajN1Ecf4mWTV6Pr">
             <div name="dynamo">0</div>
         </a>
     </div>
@@ -136,8 +135,8 @@ $(document).ready(function(){
   document.getElementsByClassName("ui red button")[0].addEventListener("click", recordVote);
 });
 
-var vote_endpoint = "https://EXAMPLE-REPLACE-ME.execute-api.us-east-1.amazonaws.com/dev/song/vote"
-var get_votes_endpoint = "https://EXAMPLE-REPLACE-ME.execute-api.us-east-1.amazonaws.com/dev/votes"
+var vote_endpoint = "https://EXAMPLE_REPLACE_ME.execute-api.us-east-1.amazonaws.com/dev/song/vote"
+var get_votes_endpoint = "https://EXAMPLE_REPLACE_ME.execute-api.us-east-1.amazonaws.com/dev/votes"
 
 function setVotes(songName, voteCount) {
   // Get div containing vote count and set the new voteCount
