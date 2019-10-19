@@ -9,6 +9,7 @@
   <!-- Site Properties -->
   <title>Serverless Jams</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.css" />
   <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -18,164 +19,122 @@
 </head>
 <body>
 
-<!-- Following Menu -->
-<div class="ui large top fixed hidden menu">
-  <div class="ui container">
-    <a class="active item" href="/">Home</a>
-    <a class="item" href="https://serverless.com">Serverless Inc.</a>
-    <a class="item" href="https://serverless.com/learn">Serverless Learn</a>
-  </div>
-</div>
-
-<!-- Sidebar Menu -->
-<div class="ui vertical inverted sidebar menu">
-    <a class="active item" href="/">Home</a>
-    <a class="item" href="https://serverless.com">Serverless Inc.</a>
-    <a class="item" href="https://serverless.com/learn">Serverless Learn</a>
-</div>
-
-<!-- Page Contents -->
-<div class="pusher">
-  <div class="ui inverted vertical masthead center aligned segment">
-
+  <!-- Following Menu -->
+  <div class="ui large top fixed hidden menu">
     <div class="ui container">
-      <div class="ui large secondary inverted pointing menu">
-        <a class="toc item">
-          <i class="sidebar icon"></i>
-        </a>
-        <a class="active item" href="/">Home</a>
-        <a class="item" href="https://serverless.com">Serverless Inc.</a>
-        <a class="item" href="https://serverless.com/learn">Serverless Learn</a>
-      </div>
+      <a class="active item" href="/">Home</a>
+      <a class="item" href="https://serverless.com">Serverless Inc.</a>
+      <a class="item" href="https://serverless.com/learn">Serverless Learn</a>
     </div>
+    <button id="btn-login" disabled="true" class="ui primary button" onclick="login()">Login</button>
+    <button id="btn-logout" disabled="true" class="ui primary button" onclick="logout()">Logout</button>
+    <div id="avatar-img-div" class="hidden">
+      <img id="avatar-img" class="ui avatar image" src="">
+    </div>
+  </div>
 
-    <div class="ui text container">
+  <!-- Sidebar Menu -->
+  <div class="ui vertical inverted sidebar menu">
+      <a class="active item" href="/">Home</a>
+      <a class="item" href="https://serverless.com">Serverless Inc.</a>
+      <a class="item" href="https://serverless.com/learn">Serverless Learn</a>
+  </div>
+
+  <!-- Page Contents -->
+  <div class="pusher">
+    <div class="ui inverted vertical masthead center aligned segment">
+
+      <div class="ui container">
+        <div class="ui large secondary inverted pointing menu">
+          <a class="toc item">
+            <i class="sidebar icon"></i>
+          </a>
+          <a class="active item" href="/">Home</a>
+          <a class="item" href="https://serverless.com">Serverless Inc.</a>
+          <a class="item" href="https://serverless.com/learn">Serverless Learn</a>
+        </div>
+      </div>
+
+      <div class="ui text container">
         <h2 class="ui center aligned inverted header">
-            <div>
-                <i class="large white music icon"></i>
-                <div class="content">Serverless Jams</div>
-                <i class="large white music icon"></i>
-            </div>
+          <div>
+            <i class="large white music icon"></i>
+            <div class="content">Serverless Jams</div>
+            <i class="large white music icon"></i>
+          </div>
         </h2>
-      
-      <h2>Vote for your favorite serverless music:</h2>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="row">
-        <div class="sixteen wide centered column">
-            <iframe src="https://open.spotify.com/embed/track/7iWC3Jb6EHchYeRZSD2yph" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/track/1Noc3uXEntDw6IsyszPxr3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            <iframe src="https://open.spotify.com/embed/track/38anNXjajN1Ecf4mWTV6Pr" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <div class="hidden" id="gated-content-1">
+          <h2>Vote for your favorite serverless music:</h2>
         </div>
+      </div>
 
-        <h2 class="ui inverted header">Pick Your Favorite Song:</h2>
+      <br>
+      <br>
 
-        <div class="ui selection dropdown">
-            <input type="hidden" name="song">
-            <i class="dropdown icon"></i>
-            <div class="default text" name="song-item">Song</div>
-            <div class="menu">
-                <div class="item" data-value="coderitis">Coderitis</div>
-                <div class="item" data-value="stateless">Stateless</div>
-                <div class="item" data-value="dynamo">Dynamo</div>
+      <div class="row">
+          <div class="sixteen wide centered column">
+              <iframe src="https://open.spotify.com/embed/track/7iWC3Jb6EHchYeRZSD2yph" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <iframe src="https://open.spotify.com/embed/track/1Noc3uXEntDw6IsyszPxr3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <iframe src="https://open.spotify.com/embed/track/38anNXjajN1Ecf4mWTV6Pr" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <div class="hidden" id="gated-content-2">
+            <h2 class="ui inverted header">Pick Your Favorite Song:</h2>
+
+            <div class="ui selection dropdown">
+                <input type="hidden" name="song">
+                <i class="dropdown icon"></i>
+                <div class="default text" name="song-item">Song</div>
+                <div class="menu">
+                    <div class="item" data-value="coderitis">Coderitis</div>
+                    <div class="item" data-value="stateless">Stateless</div>
+                    <div class="item" data-value="dynamo">Dynamo</div>
+                </div>
             </div>
-        </div>
-        <button class="ui red button">
-            Vote
-        </button>
+            <button class="ui red button">
+                Vote
+            </button>
+          </div>
+      </div>
+      <br>
+      <div class="ui labeled button" tabindex="0">
+          <a class="ui purple button" href="https://open.spotify.com/track/7iWC3Jb6EHchYeRZSD2yph">
+              <i class="star icon"></i> Coderitis
+          </a>
+          <a class="ui basic purple left pointing label" href="https://open.spotify.com/track/7iWC3Jb6EHchYeRZSD2yph">
+              <div name="coderitis">0</div>
+          </a>
+      </div>
+      <div class="ui labeled button" tabindex="0">
+          <a class="ui grey button" href="https://open.spotify.com/track/1Noc3uXEntDw6IsyszPxr3">
+              <i class="star icon"></i> Stateless
+          </a>
+          <a class="ui basic grey left pointing label" href="https://open.spotify.com/track/1Noc3uXEntDw6IsyszPxr3">
+              <div name="stateless">0</div>
+          </a>
+      </div>
+      <div class="ui labeled button" tabindex="0">
+          <a class="ui black button" href="https://open.spotify.com/track/38anNXjajN1Ecf4mWTV6Pr">
+              <i class="star icon"></i> Dynamo
+          </a>
+          <a class="ui basic black left pointing label" href="https://open.spotify.com/track/38anNXjajN1Ecf4mWTV6Pr">
+              <div name="dynamo">0</div>
+          </a>
+      </div>
     </div>
-    <br>
-    <div class="ui labeled button" tabindex="0">
-        <a class="ui purple button" href="https://open.spotify.com/track/7iWC3Jb6EHchYeRZSD2yph">
-            <i class="star icon"></i> Coderitis
-        </a>
-        <a class="ui basic purple left pointing label" href="https://open.spotify.com/track/7iWC3Jb6EHchYeRZSD2yph">
-            <div name="coderitis">0</div>
-        </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-        <a class="ui grey button" href="https://open.spotify.com/track/1Noc3uXEntDw6IsyszPxr3">
-            <i class="star icon"></i> Stateless
-        </a>
-        <a class="ui basic grey left pointing label" href="https://open.spotify.com/track/1Noc3uXEntDw6IsyszPxr3">
-            <div name="stateless">0</div>
-        </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-        <a class="ui black button" href="https://open.spotify.com/track/38anNXjajN1Ecf4mWTV6Pr">
-            <i class="star icon"></i> Dynamo
-        </a>
-        <a class="ui basic black left pointing label" href="https://open.spotify.com/track/38anNXjajN1Ecf4mWTV6Pr">
-            <div name="dynamo">0</div>
-        </a>
-    </div>
-  </div>
 
-  <div class="ui inverted vertical footer segment">
-    <div class="ui container">
-      <div class="ui stackable inverted divided centered equal height stackable grid">
-        <div class="six wide column">
-            <h4 class="ui inverted header">Yes. This is a demo site.</h4>
-            <p>But also yes these songs kinda rock so vote for your favorite on <a href="https://serverlessjams.com">serverlessjams.com</a></a></p>
+    <div class="ui inverted vertical footer segment">
+      <div class="ui container">
+        <div class="ui stackable inverted divided centered equal height stackable grid">
+          <div class="six wide column">
+              <h4 class="ui inverted header">Yes. This is a demo site.</h4>
+              <p>But also yes these songs kinda rock so vote for your favorite on <a href="https://serverlessjams.com">serverlessjams.com</a></a></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.0/auth0-spa-js.production.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth0.js"></script>
 </body>
-
-<script> 
-$(document).ready(function(){
-  $('.ui.dropdown').dropdown();  
-  refreshVoteCounts()
-  document.getElementsByClassName("ui red button")[0].addEventListener("click", recordVote);
-});
-
-var vote_endpoint = "https://EXAMPLE_REPLACE_ME.execute-api.us-east-1.amazonaws.com/dev/song/vote"
-var get_votes_endpoint = "https://EXAMPLE_REPLACE_ME.execute-api.us-east-1.amazonaws.com/dev/votes"
-
-function setVotes(songName, voteCount) {
-  // Get div containing vote count and set the new voteCount
-  document.getElementsByName(songName)[0].innerHTML = voteCount;
-}
-
-async function refreshVoteCounts() {
-    // Get the vote counts
-    const response = await fetch(get_votes_endpoint);
-    const songs = await response.json();
-    // Iterate over all three songs and update the divs
-    var i;
-    for (i = 0; i < songs.length; i++){
-        var song = songs[i]
-        setVotes(song["songName"], song["votes"])
-    }
-}
-
-async function voteForSong(songName) {
-    const response = await fetch(vote_endpoint, {
-        method: "POST",
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({"songName": songName})
-    })
-    const result_json = await response.json()
-    setVotes(songName, result_json["votes"])
-}
-
-function recordVote() {
-  if (document.getElementsByClassName("item active selected")[0]) {
-    var selectedSong = document.getElementsByClassName("item active selected")[0].getAttribute('data-value')
-    if (selectedSong) {
-      voteForSong(selectedSong)
-      console.log("voted for " + selectedSong)
-    }
-  }
-}
-
-</script>
-
 </html>
