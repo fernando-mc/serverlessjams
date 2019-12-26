@@ -10,6 +10,7 @@ provider:
   region: us-east-1
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-voteCounts
+    AUTH0_DOMAIN: fmcserverless.auth0.com
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -17,14 +18,17 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
-
 functions:
+  auth:
+    handler: backend/auth.handler
   recordSongVote:
     handler: backend/record_song_vote.handler
     events:
       - http:
           path: song/vote
           method: post
+          authorizer: 
+            name: auth
           cors: true
   getSongVoteCounts:
     handler: backend/get_song_vote_counts.handler
