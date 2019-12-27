@@ -21,7 +21,6 @@ const updateUI = async () => {
     document.getElementById("gated-content-1").classList.remove("hidden");
     document.getElementById("gated-content-2").classList.remove("hidden");
 
-    const authZeroToken = await auth0.getTokenSilently();
     const pictureUrl = await auth0.getUser()
     
     document.getElementById("avatar-img").src = pictureUrl["picture"] || 'https://icon-library.net/images/icon-of-music/icon-of-music-8.jpg';

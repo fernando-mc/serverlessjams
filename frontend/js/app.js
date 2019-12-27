@@ -25,14 +25,15 @@ async function refreshVoteCounts() {
 }
 
 async function voteForSong(songName) {
-    const accessToken = await auth0.getTokenSilently();
-    console.log(accessToken)
+    const claims = await auth0.getIdTokenClaims();
+    const id_token = claims.__raw;
+    console.log(id_token)
     const response = await fetch(vote_endpoint, {
         method: "POST",
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + accessToken
+          'Authorization': 'Bearer ' + id_token
         },
         body: JSON.stringify({"songName": songName})
     })

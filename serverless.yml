@@ -11,6 +11,7 @@ provider:
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-voteCounts
     AUTH0_DOMAIN: fmcserverless.auth0.com
+    AUTH0_CLIENT_ID: Ua5LEWBLYHXVM4BYjacf1TrErruU849G
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -56,12 +57,15 @@ resources:
 
 plugins:
   - serverless-finch
+  - serverless-python-requirements
 
 custom:
   client:
     bucketName: www.serverlessjams.com
     distributionFolder: frontend
     errorDocument: index.html
+  pythonRequirements:
+    dockerizePip: non-linux
 
 package:
   exclude:
