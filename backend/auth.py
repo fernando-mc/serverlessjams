@@ -8,8 +8,20 @@ def handler(event, context):
     payload = verify_token(token)
     print(payload)
     if payload:
-        policy = generate_policy("userfornow", 'Allow', event['methodArn'])
-        return policy
+        if payload['email_verified']:
+            policy = generate_policy(
+                payload['sub'], 
+                'Allow', 
+                event['methodArn']
+            )
+            return policy
+        else: 
+            policy = generate_policy(
+                payload['sub'],
+                "Deny",
+                event['methodArn']
+            )
+            return policy
 
 def generate_policy(principal_id, effect, resource):
     return {
