@@ -5,7 +5,7 @@ from six.moves.urllib.request import urlopen
 from jose import jwt
 
 AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
-AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
+AUTH0_API_ID = os.environ.get("AUTH0_API_ID")
 
 def verify_token(token):
     # Validate the token to make sure it's authentic
@@ -30,7 +30,7 @@ def verify_token(token):
                 token,
                 rsa_key,
                 algorithms=["RS256"],
-                audience=AUTH0_CLIENT_ID,
+                audience=AUTH0_API_ID,
                 issuer="https://"+AUTH0_DOMAIN+"/"
             )
             print("token validated successfully")

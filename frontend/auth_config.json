@@ -1,4 +1,5 @@
 {
     "domain": "fmcserverless.auth0.com",
-    "clientId": "T7iz9ONoIkwp1vnG4frPwcVPaFxahI42"
+    "clientId": "EKA2XARKdHstSyHqW6Dg8UHMChjsezNU",
+    "audience": "serverlessjamsapi"
 }

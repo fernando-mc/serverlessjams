@@ -11,7 +11,7 @@ provider:
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-voteCounts
     AUTH0_DOMAIN: fmcserverless.auth0.com
-    AUTH0_CLIENT_ID: T7iz9ONoIkwp1vnG4frPwcVPaFxahI42
+    AUTH0_API_ID: serverlessjamsapi
   iamRoleStatements:
     - Effect: Allow
       Action:
